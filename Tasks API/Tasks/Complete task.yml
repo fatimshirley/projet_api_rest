@@ -1,0 +1,24 @@
+info:
+name: Complete task
+type: http
+seq: 6
+
+http:
+method: PATCH
+url: http://127.0.0.1:8000/tasks/1/complete
+auth: inherit
+
+runtime:
+scripts:
+- type: tests
+code: |-
+test("Complétion de tâche", function() {
+expect(res.status).to.equal(200);
+expect(res.body.completed).to.equal(true);
+});
+
+settings:
+encodeUrl: true
+timeout: 0
+followRedirects: true
+maxRedirects: 5

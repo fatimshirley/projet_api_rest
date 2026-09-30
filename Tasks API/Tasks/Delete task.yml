@@ -1,0 +1,23 @@
+info:
+name: Delete task
+type: http
+seq: 7
+
+http:
+method: DELETE
+url: http://127.0.0.1:8000/tasks/1
+auth: inherit
+
+runtime:
+scripts:
+- type: tests
+code: |-
+test("Suppression de tâche", function() {
+expect(res.status).to.equal(204);
+});
+
+settings:
+encodeUrl: true
+timeout: 0
+followRedirects: true
+maxRedirects: 5

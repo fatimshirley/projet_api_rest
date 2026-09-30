@@ -1,0 +1,36 @@
+info:
+name: Create task
+type: http
+seq: 1
+
+http:
+method: POST
+url: http://127.0.0.1:8000/tasks
+headers:
+- name: Content-Type
+value: application/json
+auth: inherit
+body:
+type: json
+data: |-
+{
+"title": "Tâche Bruno",
+"description": "Test de création",
+"priority": "high"
+}
+
+runtime:
+scripts:
+- type: tests
+code: |-
+test("Création de tâche", function() {
+expect(res.status).to.equal(201);
+expect(res.body).to.have.property("id");
+expect(res.body.title).to.equal("Tâche Bruno");
+});
+
+settings:
+encodeUrl: true
+timeout: 0
+followRedirects: true
+maxRedirects: 5

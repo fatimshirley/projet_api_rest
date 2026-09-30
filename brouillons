@@ -1,0 +1,132 @@
+Oui. À ce stade, la partie développement principale est quasiment terminée. Voici le point précis.
+
+✅ Déjà terminé et validé
+
+1. Backend FastAPI
+
+Structure du projet ✅
+FastAPI configuré ✅
+PostgreSQL + SQLAlchemy ✅
+Modèle User ✅
+Modèle Task ✅
+Relation User → Tasks ✅
+Configuration .env ✅
+
+2. Authentification
+
+Inscription POST /auth/register → 201 ✅
+Mot de passe hashé avec bcrypt ✅
+Email unique ✅
+Connexion POST /auth/login → 200 ✅
+JWT fonctionnel ✅
+Protection Bearer des routes ✅
+
+3. Gestion des tâches
+
+Création → 201 ✅
+Liste → 200 ✅
+Récupération par ID → 200 ✅
+Modification → 200 ✅
+Complétion → 200 ✅
+Suppression → 204 ✅
+Filtre completed=true → 200 ✅
+Priorités low / medium / high ✅
+
+4. Sécurité
+
+Un utilisateur ne travaille que sur ses propres tâches grâce au filtrage user_id ✅
+Accès sans authentification → 401 déjà vérifié ✅
+Ressource inexistante → logique 404 implémentée ✅
+🟡 Ce qu'il reste
+1. Tests de validation
+
+Il reste à exécuter les tests :
+
+priorité invalide → 422
+titre vide → 422
+éventuellement email invalide → 422
+mot de passe trop court → 422
+
+Temps : ~10 min
+
+2. Test avec deux utilisateurs
+
+Créer un deuxième utilisateur et vérifier que B ne peut pas consulter/modifier/supprimer la tâche de A.
+
+C'est important car cela correspond directement à l'exigence de sécurité du projet.
+
+Temps : ~10–15 min
+
+3. Bruno
+
+Vérifier que la collection contient bien :
+
+Register
+Login
+Create task
+Get my tasks
+Get task by ID
+Filter tasks
+Update task
+Complete task
+Delete task
+
+Puis ajouter/valider les assertions/tests Bruno demandés.
+
+C'est probablement la partie qui demande le plus d'attention restante.
+
+Temps : ~30–45 min
+
+4. README
+
+Vérifier que le README contient :
+
+présentation
+installation
+.env
+PostgreSQL
+lancement
+endpoints
+authentification
+filtres
+structure du projet
+utilisation de Bruno
+
+Nous avions préparé son contenu, mais il faut vérifier qu'il est réellement enregistré dans ton fichier.
+
+Temps : ~10 min
+
+5. Migrations / fichiers DB
+
+Actuellement, la création de la base utilise :
+
+Base.metadata.create_all(bind=engine)
+
+Ça fonctionne, mais le sujet demande des « DB migrations/files ».
+
+Pour aller vite, on peut ajouter un fichier SQL de structure initiale plutôt que mettre en place Alembic maintenant.
+
+Temps : ~10–15 min
+
+6. Nettoyage final + Git
+vérifier git status
+vérifier qu'aucun token/mot de passe n'est dans Git
+vérifier .gitignore
+ajouter les fichiers
+faire le commit final
+
+Temps : ~10 min
+
+🟢 Estimation globale
+
+Il reste environ 1 h 15 à 1 h 45 de travail si on avance directement, principalement à cause de Bruno + sécurité + documentation.
+
+Et surtout : on n'a pas besoin de refaire le backend. Les fonctionnalités essentielles sont déjà opérationnelles.
+
+Ordre que je te conseille maintenant
+
+Validation → Sécurité avec 2 utilisateurs → Bruno → README → fichier SQL → Git/commit final.
+
+On peut donc commencer immédiatement par les tests de validation, puis avancer bloc par bloc jusqu'au rendu final.
+
+
